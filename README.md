@@ -145,6 +145,6 @@ Accept: application/json
 
 **Ссылки на диаграммы:**
 
-- [Рекламная рассылка](sequence advertisement.png)
-- [Напоминание о забытой корзине](sequence push cart.png)
-- [Уведомление об отмене заказа](sequence push order cancel.png)
+- [Рекламная рассылка](sequence%20advertisement.png)
+- [Напоминание о забытой корзине](sequence%20push%20cart.png)
+- [Уведомление об отмене заказа](sequence%20push%20order%20cancel.png)
