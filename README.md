@@ -130,7 +130,7 @@ Accept: application/json
   },
   "timestamp": "2026-04-25T14:30:00Z"
 }
-
+```
 
 
 ### Задание 3: Архитектура
