@@ -1,0 +1,114 @@
+openapi: 3.0.2
+info:
+  title: API магазинов доставки
+  version: 1.0.0
+
+paths:
+  /delivery-stores:
+    get:
+      summary: Получить список магазинов
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          schema:
+            type: number
+          example: 55.751244
+        - name: lon
+          in: query
+          required: true
+          schema:
+            type: number
+          example: 37.618423
+        - name: radius
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 10
+
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [success]
+                  data:
+                    type: object
+                    properties:
+                      stores:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            name:
+                              type: string
+                            delivery_info:
+                              type: string
+                            is_express_delivery:
+                              type: boolean
+                            external_url:
+                              type: string
+                              format: uri
+                  timestamp:
+                    type: string
+                    format: date-time
+              example:
+                status: success
+                data:
+                  stores:
+                    - id: metro_001
+                      name: METRO
+                      delivery_info: "Ближайшая доставка сегодня 21:00–23:00"
+                      is_express_delivery: false
+                      external_url: "https://delivery.metro.ru/partner/petrushka"
+                    - id: ashan_002
+                      name: Ашан
+                      delivery_info: "Ближайшая доставка сегодня 18:00–20:00"
+                      is_express_delivery: false
+                      external_url: "https://auchan-delivery.ru/petrushka"
+                    - id: vkusvill_003
+                      name: ВкусВилл
+                      delivery_info: "Быстрая доставка от 20 до 60 минут"
+                      is_express_delivery: true
+                      external_url: "https://vkusvill.ru/express/petrushka"
+                    - id: victoria_004
+                      name: ВИКТОРИЯ
+                      delivery_info: "Ближайшая доставка сегодня 17:00–19:00"
+                      is_express_delivery: false
+                      external_url: "https://victoria-delivery.ru/store/petrushka"
+                timestamp: "2026-04-25T14:30:00Z"
+
+        '401':
+          description: Не авторизован
+          content:
+            application/json:
+              example:
+                status: error
+                code: 401
+                message: "Требуется авторизация"
+
+        '404':
+          description: Магазины не найдены
+          content:
+            application/json:
+              example:
+                status: error
+                code: 404
+                message: "В радиусе 10 км не найдено магазинов"
+
+        '500':
+          description: Ошибка сервера
+          content:
+            application/json:
+              example:
+                status: error
+                code: 500
+                message: "Ошибка на сервере, попробуйте позже"
