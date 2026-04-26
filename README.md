@@ -142,3 +142,9 @@ Accept: application/json
 - Рекламная рассылка
 
 Диаграммы доступны выше в файлах.
+
+**Ссылки на диаграммы:**
+
+- [Рекламная рассылка](sequence advertisement.png)
+- [Напоминание о забытой корзине](sequence push cart.png)
+- [Уведомление об отмене заказа](sequence push order cancel.png)
